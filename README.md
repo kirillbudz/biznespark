@@ -1,36 +1,48 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Biznespark — сайт ЖК «Крепость»
 
-## Getting Started
+Маркетинговый сайт застройщика и лендинг жилого комплекса «Крепость» (квартал 65, Якутск). Корпоративная информация, описание ЖК, галерея визуализаций и интерактивный подбор квартир через виджет Profitbase.
 
-First, run the development server:
+## Технологии
+
+- **Next.js 16** (App Router)
+- **React 19**
+- **TypeScript** (strict)
+- **Tailwind CSS 4**
+- **shadcn/ui** (компоненты: Button, утилита `cn`)
+- Без CMS, без БД, без админки
+
+## Структура проекта
+
+- `src/app/` — страницы и layout (App Router)
+- `src/components/` — переиспользуемые компоненты (Hero, AboutSection, ChooseApartmentSection, GallerySection, ProfitbaseFloatingWidget)
+- `src/components/ui/` — UI-компоненты (shadcn)
+- `src/lib/` — утилиты (`cn`)
+- `public/` — статика (изображения, видео, галерея)
+
+## Запуск
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Сайт: [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Сборка
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+npm start
+```
 
-## Learn More
+## Переменные окружения
 
-To learn more about Next.js, take a look at the following resources:
+Создай `.env.local` в корне. Для виджета Profitbase нужны ключи с префиксом `NEXT_PUBLIC_PB_*`. Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Деплой
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Проект готов к деплою на Vercel, Netlify или любой хостинг с поддержкой Next.js.
 
-## Deploy on Vercel
+## Лицензия
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private.
