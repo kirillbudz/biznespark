@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Badge } from "@/components/catalyst";
 
 const BADGES = [
   "Якутск, квартал 65",
@@ -45,9 +46,9 @@ export function Hero() {
           >
             {BADGES.map((label) => (
               <li key={label}>
-                <span className="inline-block rounded-full bg-white/15 px-4 py-2 text-sm font-medium text-white backdrop-blur-sm">
+                <Badge className="!rounded-full !bg-white/15 !px-4 !py-2 text-sm font-medium !text-white backdrop-blur-sm border-0">
                   {label}
-                </span>
+                </Badge>
               </li>
             ))}
           </ul>
