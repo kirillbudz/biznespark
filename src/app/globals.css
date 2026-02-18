@@ -110,3 +110,22 @@ body {
     linear-gradient(90deg, oklch(1 0 0 / 0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
+
+/* Кнопка виджета Profitbase — всегда в правом нижнем углу при скролле */
+#profitbase-floating-root {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 9999 !important;
+  pointer-events: none;
+}
+#profitbase-floating-root > * {
+  pointer-events: auto;
+}
+/* Если виджет добавил кнопку в body */
+body > iframe[src*="profitbase"] {
+  position: fixed !important;
+  bottom: 1.5rem !important;
+  right: 1.5rem !important;
+  z-index: 9999 !important;
+}

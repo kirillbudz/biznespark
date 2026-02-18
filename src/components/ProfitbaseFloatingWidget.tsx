@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
 declare global {
@@ -25,7 +25,7 @@ const DEFAULT_PB = {
   pbApiKey: "e7e211fe783cf1c64b5788316cc29ab5",
 } as const;
 
-function initProfitbase() {
+function initProfitbase(containerRef: React.RefObject<HTMLDivElement | null>) {
   const host = process.env.NEXT_PUBLIC_PB_HOST ?? DEFAULT_PB.host;
   const pbDomain = process.env.NEXT_PUBLIC_PB_DOMAIN ?? DEFAULT_PB.pbDomain;
   const accountId = process.env.NEXT_PUBLIC_PB_ACCOUNT_ID ?? DEFAULT_PB.accountId;
@@ -48,6 +48,29 @@ function initProfitbase() {
       },
       button: { create: true },
     });
+    // Переносим кнопку виджета в фиксированный контейнер (Profitbase может добавить в body)
+    const moveWidgetIntoContainer = () => {
+      const container = containerRef.current;
+      if (!container) return;
+      const candidate =
+        document.querySelector('iframe[src*="profitbase"]')?.parentElement ??
+        document.querySelector('iframe[src*="profitbase"]') ??
+        document.querySelector("[id*='profitbase' i]") ??
+        document.querySelector("[class*='profitbase' i]") ??
+        Array.from(document.body.children).find(
+          (el) =>
+            el.id?.toLowerCase().includes("profitbase") ||
+            el.querySelector?.('iframe[src*="profitbase"]')
+        );
+      if (candidate && candidate.parentElement !== container) {
+        try {
+          container.appendChild(candidate);
+        } catch {
+          // уже перемещён или невалидный узел
+        }
+      }
+    };
+    [500, 1000, 2000, 3000].forEach((ms) => setTimeout(moveWidgetIntoContainer, ms));
   } catch (e) {
     console.error("Profitbase init error:", e);
   }
@@ -55,6 +78,7 @@ function initProfitbase() {
 
 export function ProfitbaseFloatingWidget() {
   const [isProdDomain, setIsProdDomain] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const hostname =
@@ -65,22 +89,30 @@ export function ProfitbaseFloatingWidget() {
   if (!isProdDomain) return null;
 
   return (
-    <Script
-      src="https://cdn.profitbase.ru/smart/sw.js"
-      strategy="afterInteractive"
-      onLoad={() => {
-        let attempts = 0;
-        const maxAttempts = 20;
-        const tryInit = () => {
-          if (window.ProfitbaseWidget) {
-            initProfitbase();
-            return;
-          }
-          attempts += 1;
-          if (attempts < maxAttempts) setTimeout(tryInit, 100);
-        };
-        setTimeout(tryInit, 0);
-      }}
-    />
+    <>
+      <div
+        id="profitbase-floating-root"
+        ref={containerRef}
+        className="fixed bottom-6 right-6 z-[9999] flex size-auto min-h-0 min-w-0 items-end justify-end"
+        aria-hidden
+      />
+      <Script
+        src="https://cdn.profitbase.ru/smart/sw.js"
+        strategy="afterInteractive"
+        onLoad={() => {
+          let attempts = 0;
+          const maxAttempts = 20;
+          const tryInit = () => {
+            if (window.ProfitbaseWidget) {
+              initProfitbase(containerRef);
+              return;
+            }
+            attempts += 1;
+            if (attempts < maxAttempts) setTimeout(tryInit, 100);
+          };
+          setTimeout(tryInit, 0);
+        }}
+      />
+    </>
   );
 }
