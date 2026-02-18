@@ -19,9 +19,6 @@ function initProfitbase() {
   const pbApiKey = process.env.NEXT_PUBLIC_PB_API_KEY;
 
   if (!accountId || !pbApiKey) {
-    console.warn(
-      "[Profitbase] Не заданы NEXT_PUBLIC_PB_ACCOUNT_ID или NEXT_PUBLIC_PB_API_KEY. Проверьте .env.local и перезапустите dev-сервер (npm run dev)."
-    );
     return;
   }
 
@@ -49,13 +46,22 @@ function initProfitbase() {
   }
 }
 
+const hasProfitbaseKeys =
+  typeof process.env.NEXT_PUBLIC_PB_ACCOUNT_ID === "string" &&
+  process.env.NEXT_PUBLIC_PB_ACCOUNT_ID.length > 0 &&
+  typeof process.env.NEXT_PUBLIC_PB_API_KEY === "string" &&
+  process.env.NEXT_PUBLIC_PB_API_KEY.length > 0;
+
 export function ProfitbaseFloatingWidget() {
+  if (!hasProfitbaseKeys) {
+    return null;
+  }
+
   return (
     <Script
       src="https://cdn.profitbase.ru/smart/sw.js"
       strategy="afterInteractive"
       onLoad={() => {
-        // Скрипт может выставить window.ProfitbaseWidget с небольшой задержкой
         let attempts = 0;
         const maxAttempts = 20;
         const tryInit = () => {
@@ -65,7 +71,6 @@ export function ProfitbaseFloatingWidget() {
           }
           attempts += 1;
           if (attempts < maxAttempts) setTimeout(tryInit, 100);
-          else console.warn("[Profitbase] Глобальный ProfitbaseWidget не найден после загрузки скрипта.");
         };
         setTimeout(tryInit, 0);
       }}

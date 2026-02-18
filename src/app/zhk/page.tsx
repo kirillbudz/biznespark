@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AboutSection } from "@/components/AboutSection";
 import { GallerySection } from "@/components/GallerySection";
-import { Button, Divider } from "@/components/catalyst";
 
 export const metadata: Metadata = {
   title: "О жилом комплексе «Крепость»",
@@ -14,14 +13,14 @@ export default function ZhkPage() {
   return (
     <main>
       <AboutSection />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-        <Divider soft />
-      </div>
       <GallerySection />
-      <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-        <Button href="/#choose" outline>
+      <div className="py-10 text-center">
+        <Link
+          href="/projects/krepost#choose"
+          className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30"
+        >
           Подобрать квартиру на главной
-        </Button>
+        </Link>
       </div>
     </main>
   );

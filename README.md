@@ -1,6 +1,14 @@
-# Biznespark — сайт ЖК «Крепость»
+# Бизнеспарк — сайт застройщика
 
-Маркетинговый сайт застройщика и лендинг жилого комплекса «Крепость» (квартал 65, Якутск). Корпоративная информация, описание ЖК, галерея визуализаций, форма обратной связи и интерактивный подбор квартир через виджет Profitbase.
+Корпоративный маркетинговый сайт ООО СЗ «Бизнеспарк» (Якутск): главная страница компании, лендинги жилых комплексов «Крепость» и «Гастелло», политика конфиденциальности. Описание компании, преимущества, проекты, контакты; на страницах ЖК — герой, описание, подбор квартир (виджет Profitbase), планировки, галерея, форма обратной связи.
+
+## Что есть на сайте
+
+- **Главная** (`/`) — герой компании, о застройщике, преимущества, блок проектов, контакты.
+- **ЖК «Крепость»** (`/projects/krepost`) — лендинг ЖК с подбором квартир, планировками и галереей.
+- **ЖК «Гастелло»** (`/projects/gastello`) — лендинг второго проекта.
+- **Политика конфиденциальности** (`/privacy`).
+- Контент компании вынесен в `src/content/company.ts` (название, контакты, текст «О компании», статистика).
 
 ## Стек и библиотеки
 
@@ -10,20 +18,23 @@
 - **Tailwind CSS 4** + PostCSS
 - **Catalyst** — UI-компоненты (кнопки, заголовки, форма, навигация и др.)
 - **shadcn/ui** — утилита `cn`, компонент Button
-- **Headless UI** (`@headlessui/react`) — доступные интерактивные компоненты
+- **Headless UI** (`@headlessui/react`) — интерактивные компоненты
 - **Motion** — анимации
-- **class-variance-authority**, **clsx**, **tailwind-merge** — работа с классами и вариантами стилей
+- **class-variance-authority**, **clsx**, **tailwind-merge** — классы и варианты стилей
 - **ESLint** + **eslint-config-next**
 - Без CMS, без БД, без админки
 
 ## Структура проекта
 
-- `src/app/` — страницы и layout (App Router)
-- `src/components/` — переиспользуемые компоненты (Hero, AboutSection, ChooseApartmentSection, GallerySection, ContactSection, ProfitbaseFloatingWidget и др.)
+- `src/app/` — страницы и layout (главная, проекты, privacy)
+- `src/app/api/contact/` — API отправки формы обратной связи
+- `src/components/` — секции и блоки (CompanyHero, AboutCompanySection, AdvantagesSection, ProjectsSection, Hero, AboutSection, ChooseApartmentSection, GallerySection, ContactSection, ProfitbaseFloatingWidget, ProjectNav и др.)
 - `src/components/ui/` — UI-компоненты (shadcn)
 - `src/components/catalyst/` — компоненты Catalyst
+- `src/components/gastello/` — компоненты страницы ЖК Гастелло
+- `src/content/` — данные компании и тексты
 - `src/lib/` — утилиты
-- `public/` — статика (изображения, видео, галерея)
+- `public/` — статика (изображения, видео, галерея, медиа по проектам)
 
 ## Локальный запуск
 
@@ -43,7 +54,7 @@ npm start
 
 ## Переменные окружения
 
-Создай `.env.local` в корне. Для виджета Profitbase нужны ключи с префиксом `NEXT_PUBLIC_PB_*`. Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
+Создай `.env.local` в корне. Для виджета Profitbase нужны ключи с префиксом `NEXT_PUBLIC_PB_*`. Для отправки формы (email/Telegram) — переменные из `src/app/api/contact/route.ts`. Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
 
 ## Деплой с локала в GitHub
 

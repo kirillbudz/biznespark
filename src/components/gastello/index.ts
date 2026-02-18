@@ -1,0 +1,11 @@
+export { GastelloAbout } from "./GastelloAbout";
+export { GastelloAdvantages } from "./GastelloAdvantages";
+export { GastelloContacts } from "./GastelloContacts";
+export { GastelloDeveloper } from "./GastelloDeveloper";
+export { GastelloGallery } from "./GastelloGallery";
+export { GastelloHero } from "./GastelloHero";
+export { GastelloLocation } from "./GastelloLocation";
+export { GastelloProjectNav } from "./GastelloProjectNav";
+export { GastelloPromoBanner } from "./GastelloPromoBanner";
+export { GastelloRooms } from "./GastelloRooms";
+export { GastelloStylobate } from "./GastelloStylobate";

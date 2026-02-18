@@ -1,30 +1,30 @@
-import { AboutSection } from "@/components/AboutSection";
-import { ChooseApartmentSection } from "@/components/ChooseApartmentSection";
-import { ContactSection } from "@/components/ContactSection";
-import { GallerySection } from "@/components/GallerySection";
-import { Hero } from "@/components/Hero";
-import { Divider } from "@/components/catalyst";
+import { company } from "@/content/company";
+import { AboutCompanySection } from "@/components/AboutCompanySection";
+import { AdvantagesSection } from "@/components/AdvantagesSection";
+import { CompanyHero } from "@/components/CompanyHero";
+import { HomeContactsSection } from "@/components/HomeContactsSection";
+import { ProjectsSection } from "@/components/ProjectsSection";
+import type { Metadata } from "next";
 
-export default function Page() {
+export const metadata: Metadata = {
+  title: `${company.companyName} — застройщик в Якутске`,
+  description:
+    "Строим жильё и городскую среду в Якутске. Опыт, качество, реализованные и строящиеся проекты: ЖК Крепость, ЖК Гастелло.",
+  openGraph: {
+    title: `${company.companyName} — застройщик в Якутске`,
+    description:
+      "Строим жильё и городскую среду в Якутске. Опыт, качество, реализованные и строящиеся проекты.",
+  },
+};
+
+export default function HomePage() {
   return (
-    <>
-      <Hero />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-        <Divider soft />
-      </div>
-      <AboutSection />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-        <Divider soft />
-      </div>
-      <ChooseApartmentSection />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-        <Divider soft />
-      </div>
-      <GallerySection />
-      <div className="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:px-8">
-        <Divider soft />
-      </div>
-      <ContactSection />
-    </>
+    <main>
+      <CompanyHero />
+      <AboutCompanySection />
+      <AdvantagesSection />
+      <ProjectsSection />
+      <HomeContactsSection />
+    </main>
   );
 }

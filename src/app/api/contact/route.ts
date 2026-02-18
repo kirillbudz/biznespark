@@ -15,11 +15,17 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  const { name, phone, message } = (body as Record<string, unknown>) ?? {};
+  const {
+    name,
+    phone,
+    message,
+    "cf-turnstile-response": turnstileToken,
+  } = (body as Record<string, unknown>) ?? {};
 
   const n = typeof name === "string" ? name.trim() : "";
   const p = typeof phone === "string" ? phone.trim() : "";
   const m = typeof message === "string" ? message.trim() : "";
+  const token = typeof turnstileToken === "string" ? turnstileToken.trim() : "";
 
   if (!n || !p) {
     return NextResponse.json(
@@ -35,12 +41,37 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  const secretKey = process.env.TURNSTILE_SECRET_KEY;
+  if (secretKey) {
+    if (!token) {
+      return NextResponse.json(
+        { error: "Пройдите проверку безопасности" },
+        { status: 400 }
+      );
+    }
+    const verifyRes = await fetch(
+      "https://challenges.cloudflare.com/turnstile/v0/siteverify",
+      {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ secret: secretKey, response: token }),
+      }
+    );
+    const verifyData = (await verifyRes.json()) as { success?: boolean };
+    if (!verifyRes.ok || !verifyData.success) {
+      return NextResponse.json(
+        { error: "Проверка не пройдена. Попробуйте ещё раз." },
+        { status: 400 }
+      );
+    }
+  }
+
   const telegramToken = process.env.TELEGRAM_BOT_TOKEN;
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (telegramToken && chatId) {
     const text = [
-      "Новая заявка с сайта ЖК «Крепость»",
+      "Новая заявка с сайта Группа компаний «Бизнеспарк»",
       "",
       `Имя: ${n}`,
       `Телефон: ${p}`,
