@@ -12,10 +12,11 @@ declare global {
   }
 }
 
-/** Виджет Profitbase работает только с этого домена (ограничение кабинета). */
+/** Виджет Profitbase работает только с этих доменов (ограничение кабинета). */
 const PROD_HOSTNAMES = [
   "xn--14-6kcdulgtyvmj.xn--p1ai",
   "www.xn--14-6kcdulgtyvmj.xn--p1ai",
+  "dev.xn--14-6kcdulgtyvmj.xn--p1ai",
 ];
 
 const DEFAULT_PB = {
@@ -30,8 +31,7 @@ function initProfitbase(containerRef: React.RefObject<HTMLDivElement | null>) {
   const pbDomain = process.env.NEXT_PUBLIC_PB_DOMAIN ?? DEFAULT_PB.pbDomain;
   const accountId = process.env.NEXT_PUBLIC_PB_ACCOUNT_ID ?? DEFAULT_PB.accountId;
   const pbApiKey = process.env.NEXT_PUBLIC_PB_API_KEY ?? DEFAULT_PB.pbApiKey;
-  const referrer =
-    typeof window !== "undefined" ? window.location.origin : process.env.NEXT_PUBLIC_PB_REFERRER ?? "";
+  const referrer = "http://xn--14-6kcdulgtyvmj.xn--p1ai";
 
   if (!accountId || !pbApiKey) return;
   if (!window.ProfitbaseWidget) return;
