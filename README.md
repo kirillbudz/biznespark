@@ -54,7 +54,34 @@ npm start
 
 ## Переменные окружения
 
-Создай `.env.local` в корне. Для виджета Profitbase нужны ключи с префиксом `NEXT_PUBLIC_PB_*`. Для отправки формы (email/Telegram) — переменные из `src/app/api/contact/route.ts`. Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
+Список переменных — в **`.env.example`** (скопируй в `.env.local` для разработки).
+
+- **Заявки с сайта:** чтобы заявки приходили в Telegram, на сервере обязательно задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`. Опционально: Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`).
+- **Виджет Profitbase:** ключи с префиксом `NEXT_PUBLIC_PB_*` (в проде нужны при сборке образа, если виджет должен работать). Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
+
+### Переменные на сервере (чтобы заявки приходили)
+
+Переменные окружения контейнеру передаются через Docker Swarm. После деплоя один раз настрой их на сервере:
+
+1. Подключись к серверу (например, `scripts\ssh-connect.bat` или `ssh -i путь/к/ключу root@IP`).
+2. Создай файл с переменными (например, `/root/biznespark.env`). Скопируй из репозитория `.env.example`, заполни значения:
+   - `TELEGRAM_BOT_TOKEN` — токен бота от [@BotFather](https://t.me/BotFather).
+   - `TELEGRAM_CHAT_ID` — ID чата или группы (можно узнать через [@userinfobot](https://t.me/userinfobot) в нужном чате).
+   При необходимости добавь `TURNSTILE_SECRET_KEY` и др.
+3. Примени переменные к сервису. **С ПК (если уже есть `.env.local`):** запусти **`scripts\deploy-env.bat`** — он загрузит `.env.local` на сервер и применит переменные.  
+   Либо на сервере вручную (после создания `/root/biznespark.env`):
+   ```bash
+   cd /tmp && rm -rf biznespark-build && git clone https://github.com/kirillbudz/biznespark.git biznespark-build && cd biznespark-build
+   chmod +x scripts/server-update-env.sh
+   ./scripts/server-update-env.sh /root/biznespark.env
+   ```
+   Либо одной командой:  
+   `docker service update --env-add TELEGRAM_BOT_TOKEN=ваш_токен --env-add TELEGRAM_CHAT_ID=ваш_chat_id biznespark_test`
+4. После этого контейнер перезапустится с новыми переменными; заявки начнут уходить в Telegram.
+
+Файл `/root/biznespark.env` на сервер не добавляй в репозиторий — храни только на сервере.
+
+**Почему в корне проекта на сервере нет `.env`:** репозиторий клонируется без секретов (`.env` в `.gitignore`). Переменные для **запущенного** приложения берутся из окружения контейнера (их задаёт `server-update-env.sh` из `/root/biznespark.env`). Для **сборки** образа (чтобы Cloudflare Turnstile и виджет Profitbase работали в проде) скрипт `docker-build-with-env.sh` читает тот же `/root/biznespark.env` и передаёт `NEXT_PUBLIC_*` в `docker build --build-arg`. Отдельный файл `.env` в корне репо на сервере не нужен.
 
 ## Деплой с локала в GitHub
 

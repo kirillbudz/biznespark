@@ -42,13 +42,7 @@ export async function POST(request: NextRequest) {
   }
 
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
-  if (secretKey) {
-    if (!token) {
-      return NextResponse.json(
-        { error: "Пройдите проверку безопасности" },
-        { status: 400 }
-      );
-    }
+  if (secretKey && token) {
     const verifyRes = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
