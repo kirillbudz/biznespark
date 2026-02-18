@@ -56,7 +56,7 @@ npm start
 
 Список переменных — в **`.env.example`** (скопируй в `.env.local` для разработки).
 
-- **Заявки с сайта:** чтобы заявки приходили в Telegram, на сервере обязательно задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`. Опционально: Turnstile (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY`).
+- **Заявки с сайта:** чтобы заявки приходили в Telegram, на сервере обязательно задать `TELEGRAM_BOT_TOKEN` и `TELEGRAM_CHAT_ID`. Turnstile: в [Cloudflare Turnstile](https://dash.cloudflare.com/) в настройках виджета в **Hostname Management** добавь оба хоста — корень домена и **www** (иначе на проде виджет не покажется).
 - **Виджет Profitbase:** ключи с префиксом `NEXT_PUBLIC_PB_*` (в проде нужны при сборке образа, если виджет должен работать). Локально виджет может возвращать 401/403, если в кабинете Profitbase не добавлен localhost; на проде укажи домен в настройках доступа.
 
 ### Переменные на сервере (чтобы заявки приходили)

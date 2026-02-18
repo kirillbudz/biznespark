@@ -133,7 +133,7 @@ export function ContactForm() {
   return (
     <>
       {SITE_KEY && (
-        <Script src={TURNSTILE_SCRIPT} strategy="lazyOnload" />
+        <Script src={TURNSTILE_SCRIPT} strategy="afterInteractive" />
       )}
       <form onSubmit={handleSubmit} className="max-w-md space-y-4">
         <div>
@@ -189,7 +189,7 @@ export function ContactForm() {
 
       {SITE_KEY && (
         <>
-          <div ref={containerRef} />
+          <div ref={containerRef} aria-label="Проверка Cloudflare Turnstile" />
           <input
             type="hidden"
             name="cf-turnstile-response"

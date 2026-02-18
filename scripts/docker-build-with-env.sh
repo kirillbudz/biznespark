@@ -13,7 +13,12 @@ while IFS= read -r line || [[ -n "$line" ]]; do
   line=$(echo "$line" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')
   [[ -z "$line" || "$line" =~ ^# ]] && continue
   if [[ "$line" =~ ^NEXT_PUBLIC_ ]]; then
-    build_args+=(--build-arg "$line")
+    # Убираем кавычки вокруг значения (KEY="value" -> KEY=value), иначе ключ в образе ломается
+    key="${line%%=*}"
+    value="${line#*=}"
+    value="${value#\"}"
+    value="${value%\"}"
+    build_args+=(--build-arg "${key}=${value}")
   fi
 done < "$ENV_FILE"
 echo "Сборка с ${#build_args[@]} build-arg из $ENV_FILE"
