@@ -5,6 +5,7 @@ import { ContactSection } from "@/components/ContactSection";
 import { GallerySection } from "@/components/GallerySection";
 import { Hero } from "@/components/Hero";
 import { KrepostLayoutsSection } from "@/components/KrepostLayoutsSection";
+import { LocationSection } from "@/components/LocationSection";
 import { ProjectNav } from "@/components/ProjectNav";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function KrepostPage() {
       <ChooseApartmentSection />
       <KrepostLayoutsSection />
       <GallerySection />
+      <LocationSection />
       <ContactSection />
     </main>
   );

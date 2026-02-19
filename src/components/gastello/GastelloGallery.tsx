@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { useState } from "react";
 
 const SLIDES = [
@@ -38,14 +37,7 @@ export function GastelloGallery() {
           Галерея ЖК Гастелло
         </h2>
 
-        <Link
-          href="#contacts"
-          className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-6 py-3 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
-        >
-          Купить квартиру
-        </Link>
-
-        <div className="mt-10 flex gap-3">
+        <div className="flex gap-3">
           <button
             type="button"
             onClick={() => setIndex((i) => (i === 0 ? SLIDES.length - 1 : i - 1))}

@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 
 const LINKS = [
@@ -7,6 +5,7 @@ const LINKS = [
   { href: "#choose", label: "Подобрать квартиру" },
   { href: "#layouts", label: "Планировки" },
   { href: "#gallery", label: "Визуализации" },
+  { href: "#location", label: "Локация" },
   { href: "#contact", label: "Оставить заявку" },
 ] as const;
 

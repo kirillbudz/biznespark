@@ -71,7 +71,7 @@ export function ContactForm() {
       }
       setTurnstileToken("");
     };
-  }, [SITE_KEY]);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();

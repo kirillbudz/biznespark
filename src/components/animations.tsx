@@ -1,12 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, type ReactNode } from "react";
-import {
-  motion,
-  useInView,
-  useAnimation,
-  type Variant,
-} from "motion/react";
+import { motion, useInView } from "motion/react";
 
 /* ------------------------------------------------------------------ */
 /*  FadeIn — fade + slide up, triggered when element enters viewport  */
@@ -134,8 +129,6 @@ interface CountUpProps {
 export function CountUp({ value, duration = 2, className }: CountUpProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true });
-  const [display, setDisplay] = useState("0");
-
   const numericMatch = value.match(/^([\d\s]+)/);
   const numericPart = numericMatch
     ? parseInt(numericMatch[1].replace(/\s/g, ""), 10)
@@ -143,11 +136,10 @@ export function CountUp({ value, duration = 2, className }: CountUpProps) {
   const suffix = numericMatch ? value.slice(numericMatch[0].length) : value;
   const hasNumeric = numericMatch && !isNaN(numericPart);
 
+  const [display, setDisplay] = useState(() => (hasNumeric ? "0" : value));
+
   useEffect(() => {
-    if (!isInView || !hasNumeric) {
-      if (!hasNumeric) setDisplay(value);
-      return;
-    }
+    if (!isInView || !hasNumeric) return;
 
     const startTime = performance.now();
     const durationMs = duration * 1000;

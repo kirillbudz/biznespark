@@ -4,14 +4,14 @@ import Image from "next/image";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
 
 const ADVANTAGES = [
-  { title: "Перспективная локация", icon: "/gastello/tild3861-3265-4238-b865-623565386165__vector.svg" },
-  { title: "Хорошая инфраструктура", icon: "/gastello/tild3861-3265-4238-b865-623565386165__vector.svg" },
-  { title: "Вид на зелёный луг", icon: "/gastello/tild3330-3931-4434-b463-656665393966__vector.svg" },
-  { title: "Теплый паркинг", icon: "/gastello/tild6134-3732-4262-b731-643861376230__vector.svg" },
-  { title: "Экологичные материалы", icon: "/gastello/tild3931-3134-4663-a136-346638396439__vector.svg" },
-  { title: "Автономное отопление", icon: "/gastello/tild3931-3134-4663-a136-346638396439__vector.svg" },
-  { title: "Колясочная", icon: "/gastello/tild3330-3931-4434-b463-656665393966__vector.svg" },
-  { title: "Детская площадка в доме", icon: "/gastello/tild6134-3732-4262-b731-643861376230__vector.svg" },
+  { title: "Перспективная локация", icon: "/gastello/location.webp", isSvg: false },
+  { title: "Хорошая инфраструктура", icon: "/gastello/infrosructura.svg", isSvg: true },
+  { title: "Вид на зелёный луг", icon: "/gastello/vid.svg", isSvg: true },
+  { title: "Теплый паркинг", icon: "/gastello/parking.svg", isSvg: true },
+  { title: "Экологичные материалы", icon: "/gastello/materiali.svg", isSvg: true },
+  { title: "Автономное отопление", icon: "/gastello/otoplenie.jpg", isSvg: false },
+  { title: "Колясочная", icon: "/gastello/kolaski.jpg", isSvg: false },
+  { title: "Детская площадка в доме", icon: "/gastello/dp.jpg", isSvg: false },
 ] as const;
 
 export function GastelloAdvantages() {
@@ -44,13 +44,14 @@ export function GastelloAdvantages() {
             <StaggerItem key={item.title}>
               <div className="group relative flex flex-col items-center overflow-hidden rounded-xl glass p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 hover:border-border">
                 <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/80 via-accent to-accent/80" aria-hidden />
-                <div className="relative h-[70px] w-[70px] shrink-0">
+                <div className="relative h-[70px] w-[70px] shrink-0 overflow-hidden rounded-lg">
                   <Image
                     src={item.icon}
                     alt=""
                     width={70}
                     height={70}
-                    className="object-contain dark:brightness-0 dark:invert opacity-70"
+                    unoptimized={item.isSvg}
+                    className="h-[70px] w-[70px] object-contain"
                   />
                 </div>
                 <h3 className="mt-4 text-sm font-medium text-foreground">

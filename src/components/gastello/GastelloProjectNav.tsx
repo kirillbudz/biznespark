@@ -1,12 +1,9 @@
-"use client";
-
 import Link from "next/link";
 
 const LINKS = [
   { href: "#about", label: "О проекте" },
   { href: "#advantages", label: "Преимущества" },
   { href: "#location", label: "Локация" },
-  { href: "#rooms", label: "Планировки" },
   { href: "#contacts", label: "Контакты" },
 ] as const;
 

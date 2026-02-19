@@ -4,12 +4,10 @@ import {
   GastelloAbout,
   GastelloAdvantages,
   GastelloContacts,
-  GastelloDeveloper,
   GastelloGallery,
   GastelloHero,
   GastelloLocation,
   GastelloProjectNav,
-  GastelloPromoBanner,
   GastelloRooms,
   GastelloStylobate,
 } from "@/components/gastello";
@@ -27,13 +25,11 @@ export default function GastelloPage() {
       <GastelloHero />
       <GastelloProjectNav />
       <GastelloAbout />
-      <GastelloPromoBanner />
       <GastelloAdvantages />
       <GastelloStylobate />
       <GastelloGallery />
       <GastelloLocation />
       <GastelloRooms />
-      <GastelloDeveloper />
       <GastelloContacts />
       <div className="py-10 text-center">
         <Link
