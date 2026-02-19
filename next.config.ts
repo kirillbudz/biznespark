@@ -14,6 +14,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   output: "standalone",
   devIndicators: false,
+  turbopack: {
+    root: __dirname,
+  },
   images: {
     dangerouslyAllowSVG: true,
     contentDispositionType: "inline",
