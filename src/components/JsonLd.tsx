@@ -10,6 +10,7 @@ export function JsonLd() {
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
     description: company.aboutText,
+    taxID: company.inn,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Якутск",
@@ -41,6 +42,7 @@ export function JsonLd() {
     url: baseUrl,
     telephone: company.phoneHref,
     email: company.email,
+    taxID: company.inn,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Якутск",

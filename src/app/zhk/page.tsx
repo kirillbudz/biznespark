@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { baseUrl } from "@/lib/site-url";
 import { AboutSection } from "@/components/AboutSection";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { GallerySection } from "@/components/GallerySection";
 
 const url = `${baseUrl}/zhk`;
@@ -23,10 +24,16 @@ export const metadata: Metadata = {
 export default function ZhkPage() {
   return (
     <main>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "ЖК Крепость", href: "/zhk" },
+        ]}
+      />
       <section className="border-b border-border bg-section-alt-bg py-10 md:py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <h1 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
-            ЖК «Крепость» — жилой комплекс в Якутске
+            О жилом комплексе «Крепость»
           </h1>
           <p className="mt-2 text-muted-foreground">
             Подробнее о жилом комплексе: характеристики, планировки, визуализации.

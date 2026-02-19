@@ -167,12 +167,36 @@ body {
   font-family: var(--font-sans);
 }
 
+/* Animated underline for nav links */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0.75rem;
+  right: 0.75rem;
+  bottom: 0.25rem;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
 /* Glassmorphism utility */
 .glass {
   background: var(--glass-bg);
-  backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
   border: 1px solid var(--glass-border);
+  transition:
+    box-shadow 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    border-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Grid pattern for hero backgrounds */
@@ -199,4 +223,20 @@ body > iframe[src*="profitbase"] {
   bottom: 1.5rem !important;
   right: 1.5rem !important;
   z-index: 9999 !important;
+}
+
+@media (max-width: 767px) {
+  #profitbase-floating-root,
+  body > iframe[src*="profitbase"] {
+    bottom: 4.5rem !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass {
+    transition: none;
+  }
+  .nav-link::after {
+    transition: none;
+  }
 }

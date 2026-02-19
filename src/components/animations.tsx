@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useEffect, useState, type ReactNode } from "react";
-import { motion, useInView } from "motion/react";
+import { motion, useInView, useReducedMotion } from "motion/react";
 
 /* ------------------------------------------------------------------ */
 /*  FadeIn — fade + slide up, triggered when element enters viewport  */
@@ -34,11 +34,16 @@ export function FadeIn({
 }: FadeInProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-60px" });
+  const prefersReduced = useReducedMotion();
   const offset = directionOffsets[direction];
 
   const actualDistance = distance ?? 1;
   const initialX = offset.x * actualDistance;
   const initialY = offset.y * actualDistance;
+
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -70,6 +75,11 @@ export function StaggerChildren({
 }: StaggerChildrenProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-40px" });
+  const prefersReduced = useReducedMotion();
+
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
 
   return (
     <motion.div
@@ -99,6 +109,12 @@ export function StaggerItem({
   children: ReactNode;
   className?: string;
 }) {
+  const prefersReduced = useReducedMotion();
+
+  if (prefersReduced) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       variants={{

@@ -2,6 +2,7 @@ import { company } from "@/content/company";
 import { baseUrl } from "@/lib/site-url";
 import { AboutCompanySection } from "@/components/AboutCompanySection";
 import { AdvantagesSection } from "@/components/AdvantagesSection";
+import { CaseStudiesSection } from "@/components/CaseStudiesSection";
 import { CompanyHero } from "@/components/CompanyHero";
 import { HomeContactsSection } from "@/components/HomeContactsSection";
 import { ProjectsSection } from "@/components/ProjectsSection";
@@ -27,6 +28,7 @@ export default function HomePage() {
       <CompanyHero />
       <AboutCompanySection />
       <AdvantagesSection />
+      <CaseStudiesSection />
       <ProjectsSection />
       <HomeContactsSection />
     </main>

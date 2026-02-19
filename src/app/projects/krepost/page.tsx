@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { baseUrl } from "@/lib/site-url";
 import { AboutSection } from "@/components/AboutSection";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { ChooseApartmentSection } from "@/components/ChooseApartmentSection";
 import { ContactSection } from "@/components/ContactSection";
 import { GallerySection } from "@/components/GallerySection";
@@ -28,6 +29,13 @@ export const metadata: Metadata = {
 export default function KrepostPage() {
   return (
     <main>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Проекты", href: "/#projects" },
+          { name: "ЖК Крепость", href: "/projects/krepost" },
+        ]}
+      />
       <Hero />
       <ProjectNav />
       <AboutSection />

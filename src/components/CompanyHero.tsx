@@ -56,16 +56,16 @@ export function CompanyHero() {
           <FadeIn delay={0.5}>
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
-                href="#projects"
+                href="#contact"
                 className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
               >
-                Наши проекты
+                Подобрать квартиру
               </Link>
               <Link
-                href="#contact"
+                href="#projects"
                 className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-7 py-3.5 text-base font-semibold text-foreground transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
               >
-                Связаться с нами
+                Наши проекты
               </Link>
             </div>
           </FadeIn>

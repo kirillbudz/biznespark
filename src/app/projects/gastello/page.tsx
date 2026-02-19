@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { company } from "@/content/company";
 import { baseUrl } from "@/lib/site-url";
+import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import {
   GastelloAbout,
   GastelloAdvantages,
@@ -33,6 +34,13 @@ export const metadata: Metadata = {
 export default function GastelloPage() {
   return (
     <main>
+      <BreadcrumbJsonLd
+        items={[
+          { name: "Главная", href: "/" },
+          { name: "Проекты", href: "/#projects" },
+          { name: "ЖК Гастелло", href: "/projects/gastello" },
+        ]}
+      />
       <GastelloHero />
       <GastelloProjectNav />
       <GastelloAbout />

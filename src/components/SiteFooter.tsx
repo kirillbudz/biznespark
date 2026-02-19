@@ -89,10 +89,13 @@ export function SiteFooter() {
                 </Link>
               </li>
             </ul>
-            <p className="mt-3 text-xs text-muted-foreground leading-relaxed">
-              {company.legalName}. Оферта по запросу. Проектная декларация на
-              сайте застройщика.
-            </p>
+            <div className="mt-3 space-y-1 text-xs text-muted-foreground leading-relaxed">
+              <p>{company.legalName}</p>
+              <p>ИНН {company.inn} / ОГРН {company.ogrn}</p>
+              <p>
+                Оферта по запросу. Проектная декларация на сайте застройщика.
+              </p>
+            </div>
           </div>
         </div>
 

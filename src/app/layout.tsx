@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { company } from "@/content/company";
 import { baseUrl } from "@/lib/site-url";
 import { JsonLd } from "@/components/JsonLd";
+import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ProfitbaseFloatingWidget } from "@/components/ProfitbaseFloatingWidget";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -18,6 +19,7 @@ const inter = Inter({
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
+  viewportFit: "cover",
 };
 
 export const metadata: Metadata = {
@@ -48,6 +50,7 @@ export default function RootLayout({
           <SiteHeader />
           {children}
           <SiteFooter />
+          <MobileStickyCTA />
           <ProfitbaseFloatingWidget />
         </ThemeProvider>
       </body>
