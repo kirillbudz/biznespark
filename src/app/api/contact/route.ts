@@ -74,21 +74,33 @@ export async function POST(request: NextRequest) {
       .filter(Boolean)
       .join("\n");
 
+    const chatIds = chatId.split(",").map((id) => id.trim()).filter(Boolean);
+
     try {
-      const res = await fetch(
-        `https://api.telegram.org/bot${telegramToken}/sendMessage`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ chat_id: chatId, text }),
-        }
+      const results = await Promise.allSettled(
+        chatIds.map((cid) =>
+          fetch(`https://api.telegram.org/bot${telegramToken}/sendMessage`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ chat_id: cid, text }),
+          })
+        )
       );
-      if (!res.ok) {
-        console.error("Telegram API error:", await res.text());
+
+      const allFailed = results.every((r) => r.status === "rejected");
+      if (allFailed) {
         return NextResponse.json(
           { error: "Ошибка отправки. Попробуйте позже." },
           { status: 500 }
         );
+      }
+
+      for (const r of results) {
+        if (r.status === "rejected") {
+          console.error("Telegram send error:", r.reason);
+        } else if (!r.value.ok) {
+          console.error("Telegram API error:", await r.value.text());
+        }
       }
     } catch (e) {
       console.error("Telegram send error:", e);
