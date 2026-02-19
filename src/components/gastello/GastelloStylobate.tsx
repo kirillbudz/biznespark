@@ -26,7 +26,7 @@ export function GastelloStylobate() {
         <StaggerChildren staggerDelay={0.1} className="grid grid-cols-1 md:grid-cols-3 gap-4">
           {STYLOBATE_IMAGES.map(({ src, alt }) => (
             <StaggerItem key={src}>
-              <div className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
+              <div className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-border">
                 <Image
                   src={src}
                   alt={alt}

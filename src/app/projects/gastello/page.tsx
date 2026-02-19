@@ -38,7 +38,7 @@ export default function GastelloPage() {
       <div className="py-10 text-center">
         <Link
           href="/#projects"
-          className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30"
+          className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-6 py-3 text-base font-semibold text-foreground transition-all hover:bg-muted"
         >
           Все проекты
         </Link>

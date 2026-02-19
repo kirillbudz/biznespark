@@ -6,7 +6,7 @@ export function GastelloRooms() {
   return (
     <section
       id="rooms"
-      className="py-16 md:py-24 bg-[oklch(0.1_0.025_250)]"
+      className="py-16 md:py-24 bg-section-alt-bg"
       aria-labelledby="gastello-rooms-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -17,7 +17,7 @@ export function GastelloRooms() {
             </p>
             <h2
               id="gastello-rooms-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
               Планировка квартир
             </h2>

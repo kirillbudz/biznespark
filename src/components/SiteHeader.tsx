@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { company } from "@/content/company";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/#about", label: "О компании" },
@@ -16,7 +17,7 @@ export function SiteHeader() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-white/10 bg-[oklch(0.1_0.02_250)]/90 backdrop-blur-xl">
+    <header className="sticky top-0 z-50 w-full border-b border-header-border bg-header-bg backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
         {/* Logo + Name */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
@@ -28,7 +29,7 @@ export function SiteHeader() {
             className="rounded-full"
             priority
           />
-          <span className="text-lg font-semibold tracking-tight text-white">
+          <span className="text-lg font-semibold tracking-tight text-foreground">
             {company.companyName}
           </span>
         </Link>
@@ -39,18 +40,20 @@ export function SiteHeader() {
             <Link
               key={href}
               href={href}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-white/70 transition-colors hover:text-accent hover:bg-white/5"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-accent hover:bg-secondary"
             >
               {label}
             </Link>
           ))}
         </nav>
 
-        {/* CTA + Mobile burger */}
-        <div className="flex items-center gap-3">
+        {/* CTA + Theme toggle + Mobile burger */}
+        <div className="flex items-center gap-2">
+          <ThemeToggle />
+
           <Link
             href="/#contact"
-            className="hidden sm:inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[oklch(0.1_0.02_250)]"
+            className="hidden sm:inline-flex items-center justify-center rounded-lg bg-accent px-4 py-2 text-sm font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
           >
             Оставить заявку
           </Link>
@@ -58,7 +61,7 @@ export function SiteHeader() {
           {/* Burger button */}
           <button
             type="button"
-            className="md:hidden flex items-center justify-center rounded-lg p-2 text-white/70 transition-colors hover:text-white hover:bg-white/10"
+            className="md:hidden flex items-center justify-center rounded-lg p-2 text-muted-foreground transition-colors hover:text-foreground hover:bg-secondary"
             aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
             onClick={() => setMobileOpen(!mobileOpen)}
           >
@@ -78,7 +81,7 @@ export function SiteHeader() {
       {/* Mobile menu */}
       {mobileOpen && (
         <nav
-          className="md:hidden border-t border-white/10 bg-[oklch(0.1_0.02_250)]/95 backdrop-blur-xl"
+          className="md:hidden border-t border-border bg-header-bg backdrop-blur-xl"
           aria-label="Мобильная навигация"
         >
           <div className="mx-auto max-w-6xl px-4 py-4 space-y-1">
@@ -86,7 +89,7 @@ export function SiteHeader() {
               <Link
                 key={href}
                 href={href}
-                className="block rounded-lg px-3 py-2.5 text-base font-medium text-white/80 transition-colors hover:text-accent hover:bg-white/5"
+                className="block rounded-lg px-3 py-2.5 text-base font-medium text-muted-foreground transition-colors hover:text-accent hover:bg-secondary"
                 onClick={() => setMobileOpen(false)}
               >
                 {label}

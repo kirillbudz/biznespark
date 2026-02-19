@@ -17,7 +17,7 @@ export default function ZhkPage() {
       <div className="py-10 text-center">
         <Link
           href="/projects/krepost#choose"
-          className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30"
+          className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-6 py-3 text-base font-semibold text-foreground transition-all hover:bg-muted"
         >
           Подобрать квартиру на главной
         </Link>

@@ -6,7 +6,7 @@ export function GastelloAbout() {
   return (
     <section
       id="about"
-      className="py-16 md:py-24 bg-[oklch(0.11_0.025_250)]"
+      className="py-16 md:py-24 bg-section-alt-bg"
       aria-labelledby="gastello-about"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">

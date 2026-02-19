@@ -5,12 +5,12 @@ import { FadeIn } from "@/components/animations";
 
 export function ChooseApartmentSection() {
   return (
-    <section id="choose" className="py-16 md:py-24 bg-[oklch(0.11_0.025_250)]">
+    <section id="choose" className="py-16 md:py-24 bg-section-alt-bg">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <FadeIn>
           <div className="flex items-center gap-4 mb-6">
             <div className="h-10 w-1 rounded-full bg-accent" aria-hidden />
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Подобрать квартиру
             </h2>
           </div>
@@ -28,7 +28,7 @@ export function ChooseApartmentSection() {
           <div className="mt-8">
             <Link
               href="#contact"
-              className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[oklch(0.11_0.025_250)]"
+              className="inline-flex items-center justify-center rounded-lg bg-accent px-6 py-3 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
             >
               Оставить заявку
             </Link>

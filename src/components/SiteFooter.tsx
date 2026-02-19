@@ -11,7 +11,7 @@ const FOOTER_LINKS = [
 
 export function SiteFooter() {
   return (
-    <footer className="border-t border-white/5 bg-[oklch(0.08_0.02_250)]">
+    <footer className="border-t border-border bg-footer-bg">
       <div className="mx-auto max-w-6xl px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
@@ -24,7 +24,7 @@ export function SiteFooter() {
                 height={36}
                 className="rounded-full"
               />
-              <span className="text-base font-semibold text-white">
+              <span className="text-base font-semibold text-foreground">
                 {company.companyName}
               </span>
             </Link>
@@ -35,7 +35,7 @@ export function SiteFooter() {
 
           {/* Contacts */}
           <div>
-            <p className="text-sm font-semibold text-white">Контакты</p>
+            <p className="text-sm font-semibold text-foreground">Контакты</p>
             <div className="mt-3 space-y-2 text-sm text-muted-foreground">
               <p>{company.address}</p>
               <p>
@@ -59,7 +59,7 @@ export function SiteFooter() {
 
           {/* Nav */}
           <div>
-            <p className="text-sm font-semibold text-white">Разделы</p>
+            <p className="text-sm font-semibold text-foreground">Разделы</p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
               {FOOTER_LINKS.map(({ href, label }) => (
                 <li key={href}>
@@ -76,7 +76,7 @@ export function SiteFooter() {
 
           {/* Legal */}
           <div>
-            <p className="text-sm font-semibold text-white">
+            <p className="text-sm font-semibold text-foreground">
               Юридическая информация
             </p>
             <ul className="mt-3 space-y-2 text-sm text-muted-foreground">
@@ -96,7 +96,7 @@ export function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-10 border-t border-white/5 pt-6">
+        <div className="mt-10 border-t border-border pt-6">
           <p className="text-center text-xs text-muted-foreground">
             &copy; {new Date().getFullYear()} {company.companyName}. Все права
             защищены.

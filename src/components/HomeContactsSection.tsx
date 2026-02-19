@@ -8,7 +8,7 @@ export function HomeContactsSection() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 bg-gradient-to-b from-[oklch(0.15_0.04_250)] to-background"
+      className="py-16 md:py-24 bg-gradient-to-b from-card to-background"
       aria-labelledby="contacts-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -20,7 +20,7 @@ export function HomeContactsSection() {
               </p>
               <h2
                 id="contacts-title"
-                className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
               >
                 Контакты
               </h2>
@@ -35,7 +35,7 @@ export function HomeContactsSection() {
 
           <FadeIn delay={0.15} direction="right">
             <div className="glass rounded-2xl p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Оставить заявку
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">

@@ -8,7 +8,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
-      className="py-16 md:py-24 bg-gradient-to-b from-[oklch(0.15_0.04_250)] to-background"
+      className="py-16 md:py-24 bg-gradient-to-b from-card to-background"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-16">
@@ -16,7 +16,7 @@ export function ContactSection() {
             <div>
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-10 w-1 rounded-full bg-accent" aria-hidden />
-                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                   Оставить заявку
                 </h2>
               </div>

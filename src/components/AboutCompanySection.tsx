@@ -42,7 +42,7 @@ export function AboutCompanySection() {
                   </p>
                   <h2
                     id="about-company-title"
-                    className="text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                    className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
                   >
                     {company.companyName}
                   </h2>

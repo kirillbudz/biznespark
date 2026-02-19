@@ -8,7 +8,7 @@ const HERO_IMAGE = "/gastello/tild3037-6135-4435-b266-633635373737__3.jpg";
 export function GastelloHero() {
   return (
     <section
-      className="relative min-h-[70vh] w-full overflow-hidden bg-gradient-to-br from-[oklch(0.1_0.03_250)] to-[oklch(0.08_0.02_250)]"
+      className="relative min-h-[70vh] w-full overflow-hidden bg-gradient-to-br from-background to-card"
       aria-labelledby="gastello-hero-title"
     >
       <div
@@ -17,7 +17,7 @@ export function GastelloHero() {
         aria-hidden
       />
       <div
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/20"
+        className="absolute inset-0 bg-gradient-to-b from-[var(--overlay-start)] via-[var(--overlay-mid)] to-[var(--overlay-end)]"
         aria-hidden
       />
       <div className="relative z-10 flex min-h-[70vh] flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
@@ -31,14 +31,14 @@ export function GastelloHero() {
           <FadeIn delay={0.2}>
             <h1
               id="gastello-hero-title"
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-6xl"
+              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl"
             >
               ЖК Гастелло — Ваш новый дом
             </h1>
           </FadeIn>
 
           <FadeIn delay={0.3}>
-            <p className="mt-6 text-lg text-white/80 sm:text-xl">
+            <p className="mt-6 text-lg text-muted-foreground sm:text-xl">
               Качественные многоквартирные дома для комфортной жизни в
               перспективном районе Якутска
             </p>
@@ -48,7 +48,7 @@ export function GastelloHero() {
             <div className="mt-10">
               <Link
                 href="#contacts"
-                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-black"
+                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
               >
                 Купить квартиру
               </Link>

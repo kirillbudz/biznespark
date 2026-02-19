@@ -8,7 +8,7 @@ export function GastelloContacts() {
   return (
     <section
       id="contacts"
-      className="py-16 md:py-24 bg-gradient-to-b from-[oklch(0.15_0.04_250)] to-background"
+      className="py-16 md:py-24 bg-gradient-to-b from-card to-background"
       aria-labelledby="gastello-contacts-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -20,7 +20,7 @@ export function GastelloContacts() {
               </p>
               <h2
                 id="gastello-contacts-title"
-                className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+                className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
               >
                 Офис продаж
               </h2>
@@ -30,7 +30,7 @@ export function GastelloContacts() {
                   <dt className="text-sm font-medium text-muted-foreground">
                     Адрес
                   </dt>
-                  <dd className="mt-1 text-white">{company.address}</dd>
+                  <dd className="mt-1 text-foreground">{company.address}</dd>
                 </div>
                 <div>
                   <dt className="text-sm font-medium text-muted-foreground">
@@ -39,7 +39,7 @@ export function GastelloContacts() {
                   <dd className="mt-1">
                     <a
                       href={`tel:${company.phoneHref}`}
-                      className="text-white transition-colors hover:text-accent"
+                      className="text-foreground transition-colors hover:text-accent"
                     >
                       {company.phone}
                     </a>
@@ -52,7 +52,7 @@ export function GastelloContacts() {
                   <dd className="mt-1">
                     <a
                       href={`mailto:${company.email}`}
-                      className="text-white transition-colors hover:text-accent"
+                      className="text-foreground transition-colors hover:text-accent"
                     >
                       {company.email}
                     </a>
@@ -62,7 +62,7 @@ export function GastelloContacts() {
                   <dt className="text-sm font-medium text-muted-foreground">
                     Режим работы
                   </dt>
-                  <dd className="mt-1 text-white">{company.workHours}</dd>
+                  <dd className="mt-1 text-foreground">{company.workHours}</dd>
                 </div>
               </dl>
             </div>
@@ -70,7 +70,7 @@ export function GastelloContacts() {
 
           <FadeIn delay={0.15} direction="right">
             <div className="glass rounded-2xl p-6 sm:p-8">
-              <h3 className="text-lg font-semibold text-white">
+              <h3 className="text-lg font-semibold text-foreground">
                 Оставить заявку
               </h3>
               <p className="mt-2 text-sm text-muted-foreground">

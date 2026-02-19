@@ -46,7 +46,7 @@ export function ContactForm() {
       }
       widgetIdRef.current = window.turnstile.render(containerRef.current!, {
         sitekey: SITE_KEY,
-        theme: "dark",
+        theme: "auto",
         size: "normal",
         callback: (token) => setTurnstileToken(token),
         "expired-callback": () => setTurnstileToken(""),
@@ -149,7 +149,7 @@ export function ContactForm() {
           type="text"
           required
           autoComplete="name"
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20"
+          className="w-full rounded-lg border border-border bg-secondary px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20"
           placeholder="Ваше имя"
         />
       </div>
@@ -168,7 +168,7 @@ export function ContactForm() {
           autoComplete="tel"
           pattern="^[+\d][\d\s()./\-]{4,}$"
           title="Введите номер телефона, например +7 914 271-5005"
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20"
+          className="w-full rounded-lg border border-border bg-secondary px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20"
           placeholder="+7 (___) ___-____"
         />
       </div>
@@ -184,7 +184,7 @@ export function ContactForm() {
           id="contact-message"
           name="message"
           rows={4}
-          className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 resize-none"
+          className="w-full rounded-lg border border-border bg-secondary px-4 py-2.5 text-foreground placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20 resize-none"
           placeholder="Ваш вопрос или комментарий"
         />
       </div>
@@ -208,7 +208,7 @@ export function ContactForm() {
           name="privacy-consent"
           type="checkbox"
           required
-          className="mt-1 h-4 w-4 rounded border-white/20 bg-white/5 text-accent focus:ring-2 focus:ring-accent/50 focus:ring-offset-0"
+          className="mt-1 h-4 w-4 rounded border-border bg-secondary text-accent focus:ring-2 focus:ring-accent/50 focus:ring-offset-0"
           aria-describedby="contact-privacy-consent-label"
         />
         <label

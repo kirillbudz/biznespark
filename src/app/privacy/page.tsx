@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function PrivacyPage() {
   return (
-    <main className="min-h-screen bg-[oklch(0.11_0.025_250)]">
+    <main className="min-h-screen bg-section-alt-bg">
       <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6 lg:px-8">
         <Link
           href="/"
@@ -18,7 +18,7 @@ export default function PrivacyPage() {
           ← На главную
         </Link>
 
-        <h1 className="mt-8 text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <h1 className="mt-8 text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
           Политика обработки персональных данных {company.companyName}
         </h1>
         <p className="mt-2 text-sm text-muted-foreground">
@@ -27,7 +27,7 @@ export default function PrivacyPage() {
 
         <div className="mt-10 space-y-8 text-sm leading-relaxed text-muted-foreground">
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               1. Общие положения
             </h2>
             <p className="mb-2">
@@ -45,30 +45,30 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               2. Основные термины и определения
             </h2>
             <ul className="list-inside space-y-1.5">
               <li>
-                <strong className="text-white">Персональные данные</strong> — любая
+                <strong className="text-foreground">Персональные данные</strong> — любая
                 информация, относящаяся к прямо или косвенно определенному или определяемому
                 физическому лицу (субъекту персональных данных).
               </li>
               <li>
-                <strong className="text-white">Оператор</strong> — {company.legalName},
+                <strong className="text-foreground">Оператор</strong> — {company.legalName},
                 самостоятельно организующая и осуществляющая обработку персональных данных,
                 а также определяющая цели обработки, состав персональных данных и действия
                 (операции), совершаемые с персональными данными.
               </li>
               <li>
-                <strong className="text-white">Обработка персональных данных</strong> —
+                <strong className="text-foreground">Обработка персональных данных</strong> —
                 любое действие (операция) или совокупность действий с персональными
                 данными: сбор, запись, систематизация, накопление, хранение, уточнение,
                 извлечение, использование, передача, обезличивание, блокирование, удаление,
                 уничтожение.
               </li>
               <li>
-                <strong className="text-white">Трансграничная передача персональных
+                <strong className="text-foreground">Трансграничная передача персональных
                 данных</strong> — передача персональных данных на территорию иностранного
                 государства.
               </li>
@@ -76,7 +76,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               3. Оператор персональных данных
             </h2>
             <p>
@@ -93,7 +93,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               4. Правовые основания обработки персональных данных
             </h2>
             <p>
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               5. Принципы и цели обработки персональных данных
             </h2>
             <p className="mb-2">
@@ -127,7 +127,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               6. Перечень субъектов персональных данных
             </h2>
             <p>
@@ -139,7 +139,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               7. Перечень персональных данных
             </h2>
             <p>
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               8. Функции Оператора при обработке персональных данных
             </h2>
             <p>
@@ -166,7 +166,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               9. Условия обработки персональных данных
             </h2>
             <p className="mb-2">
@@ -194,7 +194,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               10. Перечень действий с персональными данными и способы обработки
             </h2>
             <p>
@@ -207,7 +207,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               11. Права субъектов персональных данных
             </h2>
             <p>
@@ -223,7 +223,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               12. Меры по обеспечению безопасности персональных данных
             </h2>
             <p>
@@ -236,7 +236,7 @@ export default function PrivacyPage() {
           </section>
 
           <section>
-            <h2 className="mb-3 text-base font-semibold text-white">
+            <h2 className="mb-3 text-base font-semibold text-foreground">
               13. Заключительные положения
             </h2>
             <p className="mb-2">
@@ -252,8 +252,8 @@ export default function PrivacyPage() {
             </p>
           </section>
 
-          <section className="border-t border-white/10 pt-8">
-            <h2 className="mb-6 text-lg font-semibold text-white">
+          <section className="border-t border-border pt-8">
+            <h2 className="mb-6 text-lg font-semibold text-foreground">
               Согласие на обработку персональных данных (включая cookie)
             </h2>
             <div className="space-y-4">
@@ -269,20 +269,20 @@ export default function PrivacyPage() {
             <div className="my-6 overflow-x-auto">
               <table className="w-full min-w-[600px] border-collapse text-left text-sm">
                 <thead>
-                  <tr className="border-b border-white/20">
-                    <th className="py-3 pr-4 font-semibold text-white">
+                  <tr className="border-b border-border">
+                    <th className="py-3 pr-4 font-semibold text-foreground">
                       Категория субъектов персональных данных
                     </th>
-                    <th className="py-3 pr-4 font-semibold text-white">
+                    <th className="py-3 pr-4 font-semibold text-foreground">
                       Перечень персональных данных
                     </th>
-                    <th className="py-3 font-semibold text-white">
+                    <th className="py-3 font-semibold text-foreground">
                       Цели обработки
                     </th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className="border-b border-white/10 align-top">
+                  <tr className="border-b border-border align-top">
                     <td className="py-3 pr-4">Пользователи сайта</td>
                     <td className="py-3 pr-4">
                       IP-адрес; сведения о пользовательском устройстве и используемом
@@ -296,7 +296,7 @@ export default function PrivacyPage() {
                       рекламных и аналитических инструментов — персонализация предложений
                     </td>
                   </tr>
-                  <tr className="border-b border-white/10 align-top">
+                  <tr className="border-b border-border align-top">
                     <td className="py-3 pr-4">
                       Пользователи сайта и клиенты, заполнившие форму обратной связи
                     </td>
@@ -369,7 +369,7 @@ export default function PrivacyPage() {
         <div className="mt-12">
           <Link
             href="/"
-            className="inline-flex items-center rounded-lg border border-white/20 bg-white/5 px-5 py-2.5 text-sm font-medium text-white transition-colors hover:bg-white/10 hover:border-white/30"
+            className="inline-flex items-center rounded-lg border border-border bg-secondary px-5 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
           >
             ← На главную
           </Link>

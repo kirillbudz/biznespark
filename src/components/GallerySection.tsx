@@ -23,7 +23,7 @@ export function GallerySection() {
         <FadeIn>
           <div className="flex items-center gap-4 mb-2">
             <div className="h-10 w-1 rounded-full bg-accent" aria-hidden />
-            <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+            <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
               Визуализации
             </h2>
           </div>
@@ -38,7 +38,7 @@ export function GallerySection() {
         >
           {GALLERY_ITEMS.map(({ src, alt }) => (
             <StaggerItem key={src}>
-              <figure className="group overflow-hidden rounded-xl border border-white/10">
+              <figure className="group overflow-hidden rounded-xl border border-border">
                 <Image
                   src={src}
                   alt={alt}

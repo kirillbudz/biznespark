@@ -49,7 +49,7 @@ export function AdvantagesSection() {
   return (
     <section
       id="advantages"
-      className="py-16 md:py-24 bg-[oklch(0.11_0.025_250)]"
+      className="py-16 md:py-24 bg-section-alt-bg"
       aria-labelledby="advantages-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -60,7 +60,7 @@ export function AdvantagesSection() {
             </p>
             <h2
               id="advantages-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
               Преимущества застройщика
             </h2>
@@ -73,14 +73,14 @@ export function AdvantagesSection() {
         >
           {ADVANTAGES.map((item) => (
             <StaggerItem key={item.title} className="flex">
-              <div className="group relative flex w-full flex-col overflow-hidden rounded-xl glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 hover:border-white/20">
+              <div className="group relative flex w-full flex-col overflow-hidden rounded-xl glass p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 hover:border-border">
                 {/* Gold accent line at top */}
                 <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/80 via-accent to-accent/80" aria-hidden />
 
                 <div className="mb-4 inline-flex shrink-0 rounded-lg bg-accent/10 p-2.5 text-accent">
                   {item.icon}
                 </div>
-                <h3 className="shrink-0 text-lg font-semibold text-white">
+                <h3 className="shrink-0 text-lg font-semibold text-foreground">
                   {item.title}
                 </h3>
                 <p className="mt-2 min-h-0 flex-1 text-sm leading-relaxed text-muted-foreground">

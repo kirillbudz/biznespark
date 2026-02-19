@@ -31,7 +31,7 @@ export function GastelloGallery() {
           priority={index === 0}
         />
       </div>
-      <div className="absolute inset-0 bg-black/50" aria-hidden />
+      <div className="absolute inset-0 bg-[var(--overlay-mid)]" aria-hidden />
 
       <div className="relative z-10 flex min-h-[60vh] flex-col items-center justify-center px-4 py-16">
         <h2 id="gastello-gallery-title" className="sr-only">
@@ -40,7 +40,7 @@ export function GastelloGallery() {
 
         <Link
           href="#contacts"
-          className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-6 py-3 text-base font-semibold text-white backdrop-blur-sm transition-all hover:bg-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30"
+          className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-6 py-3 text-base font-semibold text-foreground backdrop-blur-sm transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
         >
           Купить квартиру
         </Link>
@@ -49,7 +49,7 @@ export function GastelloGallery() {
           <button
             type="button"
             onClick={() => setIndex((i) => (i === 0 ? SLIDES.length - 1 : i - 1))}
-            className="rounded-full bg-white/10 p-2.5 text-white backdrop-blur-sm border border-white/10 transition-all hover:bg-white/20 hover:border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="rounded-full bg-secondary p-2.5 text-foreground backdrop-blur-sm border border-border transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
             aria-label="Предыдущий слайд"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -59,7 +59,7 @@ export function GastelloGallery() {
           <button
             type="button"
             onClick={() => setIndex((i) => (i === SLIDES.length - 1 ? 0 : i + 1))}
-            className="rounded-full bg-white/10 p-2.5 text-white backdrop-blur-sm border border-white/10 transition-all hover:bg-white/20 hover:border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+            className="rounded-full bg-secondary p-2.5 text-foreground backdrop-blur-sm border border-border transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring"
             aria-label="Следующий слайд"
           >
             <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden>
@@ -79,7 +79,7 @@ export function GastelloGallery() {
               className={`h-2 w-2 rounded-full transition-colors ${
                 i === index
                   ? "bg-accent"
-                  : "bg-white/40 hover:bg-white/60"
+                  : "bg-muted-foreground/40 hover:bg-muted-foreground/60"
               }`}
               aria-label={`Слайд ${i + 1}`}
             />

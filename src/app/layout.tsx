@@ -4,6 +4,7 @@ import { company } from "@/content/company";
 import { ProfitbaseFloatingWidget } from "@/components/ProfitbaseFloatingWidget";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -32,12 +33,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <ProfitbaseFloatingWidget />
+        <ThemeProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <ProfitbaseFloatingWidget />
+        </ThemeProvider>
       </body>
     </html>
   );

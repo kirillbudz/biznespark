@@ -9,7 +9,7 @@ export function CompanyHero() {
   return (
     <section
       id="hero"
-      className="relative min-h-[85vh] w-full overflow-hidden bg-gradient-to-br from-[oklch(0.1_0.03_250)] via-[oklch(0.14_0.05_250)] to-[oklch(0.1_0.02_260)]"
+      className="relative min-h-[85vh] w-full overflow-hidden bg-gradient-to-br from-background via-card to-background"
       aria-labelledby="company-hero-title"
     >
       {/* Grid pattern overlay */}
@@ -38,7 +38,7 @@ export function CompanyHero() {
           <FadeIn delay={0.2}>
             <h1
               id="company-hero-title"
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl"
+              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-7xl"
             >
               Строим{" "}
               <span className="text-accent">будущее</span>{" "}
@@ -57,13 +57,13 @@ export function CompanyHero() {
             <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
               <Link
                 href="#projects"
-                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-[oklch(0.1_0.03_250)]"
+                className="inline-flex items-center justify-center rounded-lg bg-accent px-7 py-3.5 text-base font-semibold text-accent-foreground transition-all hover:brightness-110 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 focus:ring-offset-background"
               >
                 Наши проекты
               </Link>
               <Link
                 href="#contact"
-                className="inline-flex items-center justify-center rounded-lg border border-white/20 bg-white/5 px-7 py-3.5 text-base font-semibold text-white transition-all hover:bg-white/10 hover:border-white/30 focus:outline-none focus:ring-2 focus:ring-white/30 focus:ring-offset-2 focus:ring-offset-[oklch(0.1_0.03_250)]"
+                className="inline-flex items-center justify-center rounded-lg border border-border bg-secondary px-7 py-3.5 text-base font-semibold text-foreground transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
               >
                 Связаться с нами
               </Link>
@@ -79,7 +79,7 @@ export function CompanyHero() {
           {company.stats.map((stat) => (
             <StaggerItem key={stat.label}>
               <div className="glass rounded-xl px-4 py-5 text-center">
-                <p className="text-2xl font-bold text-white sm:text-3xl">
+                <p className="text-2xl font-bold text-foreground sm:text-3xl">
                   <CountUp value={stat.value} />
                 </p>
                 <p className="mt-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">

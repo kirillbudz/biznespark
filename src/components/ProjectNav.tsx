@@ -13,7 +13,7 @@ const LINKS = [
 export function ProjectNav() {
   return (
     <nav
-      className="sticky top-16 z-40 border-b border-white/10 bg-[oklch(0.1_0.02_250)]/95 backdrop-blur-xl"
+      className="sticky top-16 z-40 border-b border-header-border bg-header-bg backdrop-blur-xl"
       aria-label="Навигация по разделам проекта"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -22,7 +22,7 @@ export function ProjectNav() {
             <li key={href} className="shrink-0">
               <Link
                 href={href}
-                className="inline-block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-white/5 hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-2 focus:ring-offset-[oklch(0.1_0.02_250)]"
+                className="inline-block rounded-lg px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-accent focus:outline-none focus:ring-2 focus:ring-accent/40 focus:ring-offset-2 focus:ring-offset-background"
               >
                 {label}
               </Link>

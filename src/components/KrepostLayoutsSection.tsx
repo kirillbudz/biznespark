@@ -159,7 +159,7 @@ export function KrepostLayoutsSection() {
   return (
     <section
       id="layouts"
-      className="py-16 md:py-24 bg-[oklch(0.11_0.025_250)]"
+      className="py-16 md:py-24 bg-section-alt-bg"
       aria-labelledby="layouts-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -171,7 +171,7 @@ export function KrepostLayoutsSection() {
             </p>
             <h2
               id="layouts-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
               Планировки квартир
             </h2>
@@ -218,7 +218,7 @@ export function KrepostLayoutsSection() {
                   <button
                     type="button"
                     onClick={prev}
-                    className="rounded-full bg-white/10 p-2.5 text-white border border-white/10 transition-all hover:bg-white/20 hover:border-white/20 focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="rounded-full bg-secondary p-2.5 text-foreground border border-border transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-accent/40"
                     aria-label="Предыдущая планировка"
                   >
                     <svg
@@ -248,7 +248,7 @@ export function KrepostLayoutsSection() {
                         className={`h-2.5 w-2.5 rounded-full transition-all ${
                           i === slideIndex
                             ? "bg-accent scale-110"
-                            : "bg-white/30 hover:bg-white/50"
+                            : "bg-muted-foreground/30 hover:bg-muted-foreground/50"
                         }`}
                         aria-label={`Планировка ${i + 1}`}
                       />
@@ -258,7 +258,7 @@ export function KrepostLayoutsSection() {
                   <button
                     type="button"
                     onClick={next}
-                    className="rounded-full bg-white/10 p-2.5 text-white border border-white/10 transition-all hover:bg-white/20 hover:border-white/20 focus:outline-none focus:ring-2 focus:ring-accent/40"
+                    className="rounded-full bg-secondary p-2.5 text-foreground border border-border transition-all hover:bg-muted focus:outline-none focus:ring-2 focus:ring-accent/40"
                     aria-label="Следующая планировка"
                   >
                     <svg
@@ -283,7 +283,7 @@ export function KrepostLayoutsSection() {
             {/* Description card */}
             <div className="glass rounded-2xl p-6 sm:p-8">
               <div className="flex items-baseline gap-2 mb-1">
-                <span className="text-3xl font-bold text-white">
+                <span className="text-3xl font-bold text-foreground">
                   {current.totalArea}
                 </span>
                 <span className="text-lg text-muted-foreground">м²</span>
@@ -294,7 +294,7 @@ export function KrepostLayoutsSection() {
                 <span>Жилая: {current.livingArea} м²</span>
               </div>
 
-              <div className="my-5 h-px bg-white/10" />
+              <div className="my-5 h-px bg-border" />
 
               <h3 className="text-sm font-medium uppercase tracking-wider text-accent mb-4">
                 Помещения
@@ -307,17 +307,17 @@ export function KrepostLayoutsSection() {
                     className="flex items-center justify-between text-sm"
                   >
                     <span className="text-muted-foreground">{room.name}</span>
-                    <span className="text-white font-medium">
+                    <span className="text-foreground font-medium">
                       {room.area} м²
                     </span>
                   </li>
                 ))}
               </ul>
 
-              <div className="my-5 h-px bg-white/10" />
+              <div className="my-5 h-px bg-border" />
 
               <div className="flex items-center justify-between text-sm font-semibold">
-                <span className="text-white">Общая площадь</span>
+                <span className="text-foreground">Общая площадь</span>
                 <span className="text-accent">{current.totalArea} м²</span>
               </div>
 

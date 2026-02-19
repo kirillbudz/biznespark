@@ -21,7 +21,7 @@ export function AboutSection() {
             <FadeIn direction="left">
               <div className="flex items-center gap-4 mb-6">
                 <div className="h-10 w-1 rounded-full bg-accent" aria-hidden />
-                <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+                <h2 className="text-2xl font-bold tracking-tight text-foreground sm:text-3xl">
                   О жилом комплексе
                 </h2>
               </div>

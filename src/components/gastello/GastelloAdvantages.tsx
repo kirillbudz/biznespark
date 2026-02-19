@@ -18,7 +18,7 @@ export function GastelloAdvantages() {
   return (
     <section
       id="advantages"
-      className="py-16 md:py-24 bg-[oklch(0.11_0.025_250)]"
+      className="py-16 md:py-24 bg-section-alt-bg"
       aria-labelledby="gastello-advantages-title"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -29,7 +29,7 @@ export function GastelloAdvantages() {
             </p>
             <h2
               id="gastello-advantages-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
               Преимущества проекта
             </h2>
@@ -42,7 +42,7 @@ export function GastelloAdvantages() {
         >
           {ADVANTAGES.map((item) => (
             <StaggerItem key={item.title}>
-              <div className="group relative flex flex-col items-center overflow-hidden rounded-xl glass p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 hover:border-white/20">
+              <div className="group relative flex flex-col items-center overflow-hidden rounded-xl glass p-6 text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-accent/5 hover:border-border">
                 <div className="absolute inset-x-0 top-0 h-[3px] bg-gradient-to-r from-accent/80 via-accent to-accent/80" aria-hidden />
                 <div className="relative h-[70px] w-[70px] shrink-0">
                   <Image
@@ -50,10 +50,10 @@ export function GastelloAdvantages() {
                     alt=""
                     width={70}
                     height={70}
-                    className="object-contain brightness-0 invert opacity-70"
+                    className="object-contain dark:brightness-0 dark:invert opacity-70"
                   />
                 </div>
-                <h3 className="mt-4 text-sm font-medium text-white">
+                <h3 className="mt-4 text-sm font-medium text-foreground">
                   {item.title}
                 </h3>
               </div>

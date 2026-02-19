@@ -10,7 +10,7 @@ export function GastelloLocation() {
   return (
     <section
       id="location"
-      className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] bg-[oklch(0.1_0.025_250)]"
+      className="grid grid-cols-1 lg:grid-cols-2 min-h-[500px] bg-section-alt-bg"
       aria-labelledby="gastello-location-title"
     >
       <FadeIn direction="left" className="flex flex-col justify-center px-4 py-12 sm:px-6 lg:px-8 lg:py-16 order-2 lg:order-1">
@@ -18,13 +18,13 @@ export function GastelloLocation() {
           <div className="h-10 w-1 rounded-full bg-accent" aria-hidden />
           <h2
             id="gastello-location-title"
-            className="text-2xl font-bold tracking-tight text-white"
+            className="text-2xl font-bold tracking-tight text-foreground"
           >
             Офис продаж
           </h2>
         </div>
 
-        <dl className="space-y-4 text-white">
+        <dl className="space-y-4 text-foreground">
           <div>
             <dt className="text-sm font-medium text-muted-foreground">
               Адрес

@@ -41,7 +41,7 @@ export function ProjectsSection() {
             </p>
             <h2
               id="projects-title"
-              className="mt-2 text-2xl font-bold tracking-tight text-white sm:text-3xl"
+              className="mt-2 text-2xl font-bold tracking-tight text-foreground sm:text-3xl"
             >
               Наши проекты
             </h2>
@@ -60,7 +60,7 @@ export function ProjectsSection() {
             <StaggerItem key={project.href}>
               <Link
                 href={project.href}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-card transition-all duration-300 hover:border-white/20 hover:shadow-xl hover:shadow-accent/5"
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-border hover:shadow-xl hover:shadow-accent/5"
               >
                 {/* Image */}
                 <div className="relative aspect-[16/9] overflow-hidden bg-muted">
@@ -73,7 +73,7 @@ export function ProjectsSection() {
                   />
                   {/* Gradient overlay */}
                   <div
-                    className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-[var(--overlay-start)] via-transparent to-transparent opacity-60"
                     aria-hidden
                   />
                   {/* Status badge */}
@@ -90,7 +90,7 @@ export function ProjectsSection() {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-xl font-semibold text-white group-hover:text-accent transition-colors">
+                  <h3 className="text-xl font-semibold text-foreground group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
