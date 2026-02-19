@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import { company } from "@/content/company";
+import { baseUrl } from "@/lib/site-url";
+import { JsonLd } from "@/components/JsonLd";
 import { ProfitbaseFloatingWidget } from "@/components/ProfitbaseFloatingWidget";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
@@ -13,7 +15,13 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
+  metadataBase: new URL(baseUrl),
   title: {
     default: `${company.companyName} — застройщик в Якутске`,
     template: `%s | ${company.companyName}`,
@@ -35,6 +43,7 @@ export default function RootLayout({
   return (
     <html lang="ru" suppressHydrationWarning>
       <body className={`${inter.variable} antialiased`}>
+        <JsonLd />
         <ThemeProvider>
           <SiteHeader />
           {children}

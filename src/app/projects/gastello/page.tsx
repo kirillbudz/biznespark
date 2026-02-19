@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { company } from "@/content/company";
+import { baseUrl } from "@/lib/site-url";
 import {
   GastelloAbout,
   GastelloAdvantages,
@@ -13,10 +14,20 @@ import {
 } from "@/components/gastello";
 import Link from "next/link";
 
+const url = `${baseUrl}/projects/gastello`;
+
 export const metadata: Metadata = {
   title: `ЖК «Гастелло» — современная новостройка в Якутске | ${company.companyName}`,
   description:
     "Ищете комфортное жильё в Якутске? ЖК «Гастелло» — это современные квартиры в новостройке с продуманными планировками, благоустроенной территорией и удобным расположением. Узнайте подробности и забронируйте свою квартиру!",
+  alternates: { canonical: url },
+  openGraph: {
+    url,
+    title: `ЖК «Гастелло» — новостройка в Якутске | ${company.companyName}`,
+    description:
+      "ЖК «Гастелло» — современные квартиры в новостройке Якутска с продуманными планировками и благоустроенной территорией.",
+    images: [{ url: "/logo.png", width: 512, height: 512, alt: "ЖК Гастелло" }],
+  },
 };
 
 export default function GastelloPage() {

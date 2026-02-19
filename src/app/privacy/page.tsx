@@ -1,10 +1,19 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { company } from "@/content/company";
+import { baseUrl } from "@/lib/site-url";
+
+const url = `${baseUrl}/privacy`;
 
 export const metadata: Metadata = {
   title: "Политика конфиденциальности",
   description: `Политика обработки персональных данных ${company.companyName}.`,
+  alternates: { canonical: url },
+  openGraph: {
+    url,
+    title: `Политика конфиденциальности | ${company.companyName}`,
+    description: `Политика обработки персональных данных ${company.companyName}.`,
+  },
 };
 
 export default function PrivacyPage() {
