@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
@@ -20,10 +21,14 @@ export function GastelloGallery() {
       aria-labelledby="gastello-gallery-title"
     >
       <div className="absolute inset-0">
-        <div
-          className="h-full w-full bg-cover bg-center bg-no-repeat transition-all duration-700"
-          style={{ backgroundImage: `url(${slide.src})` }}
-          aria-hidden
+        <Image
+          key={slide.src}
+          src={slide.src}
+          alt={slide.alt}
+          fill
+          sizes="100vw"
+          className="object-cover transition-all duration-700"
+          priority={index === 0}
         />
       </div>
       <div className="absolute inset-0 bg-black/50" aria-hidden />

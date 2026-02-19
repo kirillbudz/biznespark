@@ -14,6 +14,12 @@ declare global {
   }
 }
 
+const PB_HOST = process.env.NEXT_PUBLIC_PB_HOST ?? "";
+const PB_DOMAIN = process.env.NEXT_PUBLIC_PB_DOMAIN ?? "";
+const PB_ACCOUNT_ID = process.env.NEXT_PUBLIC_PB_ACCOUNT_ID ?? "";
+const PB_REFERRER = process.env.NEXT_PUBLIC_PB_REFERRER ?? "";
+const PB_API_KEY = process.env.NEXT_PUBLIC_PB_API_KEY ?? "";
+
 const PROD_HOSTNAMES = [
   "xn--14-6kcdulgtyvmj.xn--p1ai",
   "www.xn--14-6kcdulgtyvmj.xn--p1ai",
@@ -21,7 +27,10 @@ const PROD_HOSTNAMES = [
 ];
 
 export function ProfitbaseFloatingWidget() {
+  const hasConfig = PB_HOST && PB_DOMAIN && PB_ACCOUNT_ID && PB_API_KEY;
+
   useEffect(() => {
+    if (!hasConfig) return;
     if (!PROD_HOSTNAMES.includes(window.location.hostname)) return;
 
     const script = document.createElement("script");
@@ -32,21 +41,24 @@ export function ProfitbaseFloatingWidget() {
       const w = window.ProfitbaseWidget();
       w.init({
         params: {
-          host: "https://smart-catalog.profitbase.ru/eco",
-          pbDomain: "profitbase.ru",
-          accountId: "20470",
-          referrer: "http://xn--14-6kcdulgtyvmj.xn--p1ai",
-          pbApiKey: "e7e211fe783cf1c64b5788316cc29ab5",
+          host: PB_HOST,
+          pbDomain: PB_DOMAIN,
+          accountId: PB_ACCOUNT_ID,
+          referrer: PB_REFERRER,
+          pbApiKey: PB_API_KEY,
         },
         button: { create: true },
       });
+    };
+    script.onerror = () => {
+      console.warn("Profitbase widget script failed to load");
     };
     document.head.appendChild(script);
 
     return () => {
       script.remove();
     };
-  }, []);
+  }, [hasConfig]);
 
   return null;
 }

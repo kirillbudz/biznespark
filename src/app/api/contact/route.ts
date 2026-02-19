@@ -4,7 +4,61 @@ const MAX_NAME = 200;
 const MAX_PHONE = 30;
 const MAX_MESSAGE = 2000;
 
+const PHONE_RE = /^[+\d][\d\s()./-]{4,}$/;
+
+/* ---------- Rate limiter (in-memory, per IP) ---------- */
+const RATE_WINDOW_MS = 60_000;
+const RATE_MAX = 5;
+const hits = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const timestamps = (hits.get(ip) ?? []).filter((t) => now - t < RATE_WINDOW_MS);
+  if (timestamps.length >= RATE_MAX) {
+    hits.set(ip, timestamps);
+    return true;
+  }
+  timestamps.push(now);
+  hits.set(ip, timestamps);
+  return false;
+}
+
+// Periodic cleanup so the Map doesn't grow indefinitely
+if (typeof globalThis !== "undefined") {
+  const CLEANUP_INTERVAL = 5 * 60_000;
+  const timer = setInterval(() => {
+    const now = Date.now();
+    for (const [ip, timestamps] of hits) {
+      const fresh = timestamps.filter((t) => now - t < RATE_WINDOW_MS);
+      if (fresh.length === 0) hits.delete(ip);
+      else hits.set(ip, fresh);
+    }
+  }, CLEANUP_INTERVAL);
+  timer.unref?.();
+}
+
+/* ---------- Telegram text escaping ---------- */
+function escapeTelegram(text: string): string {
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+/* ---------- Handler ---------- */
 export async function POST(request: NextRequest) {
+  const ip =
+    request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    request.headers.get("x-real-ip") ??
+    "unknown";
+
+  if (isRateLimited(ip)) {
+    return NextResponse.json(
+      { error: "Слишком много запросов. Подождите минуту." },
+      { status: 429 }
+    );
+  }
+
   let body: unknown;
   try {
     body = await request.json();
@@ -41,8 +95,21 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!PHONE_RE.test(p)) {
+    return NextResponse.json(
+      { error: "Введите корректный номер телефона" },
+      { status: 400 }
+    );
+  }
+
   const secretKey = process.env.TURNSTILE_SECRET_KEY;
-  if (secretKey && token) {
+  if (secretKey) {
+    if (!token) {
+      return NextResponse.json(
+        { error: "Пройдите проверку безопасности." },
+        { status: 400 }
+      );
+    }
     const verifyRes = await fetch(
       "https://challenges.cloudflare.com/turnstile/v0/siteverify",
       {
@@ -67,9 +134,9 @@ export async function POST(request: NextRequest) {
     const text = [
       "Новая заявка с сайта Группа компаний «Бизнеспарк»",
       "",
-      `Имя: ${n}`,
-      `Телефон: ${p}`,
-      m ? `Сообщение: ${m}` : "",
+      `Имя: ${escapeTelegram(n)}`,
+      `Телефон: ${escapeTelegram(p)}`,
+      m ? `Сообщение: ${escapeTelegram(m)}` : "",
     ]
       .filter(Boolean)
       .join("\n");
@@ -87,7 +154,9 @@ export async function POST(request: NextRequest) {
         )
       );
 
-      const allFailed = results.every((r) => r.status === "rejected");
+      const allFailed = results.every(
+        (r) => r.status === "rejected" || !r.value.ok
+      );
       if (allFailed) {
         return NextResponse.json(
           { error: "Ошибка отправки. Попробуйте позже." },

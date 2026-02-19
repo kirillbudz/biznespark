@@ -166,6 +166,8 @@ export function ContactForm() {
           type="tel"
           required
           autoComplete="tel"
+          pattern="^[+\d][\d\s()./\-]{4,}$"
+          title="Введите номер телефона, например +7 914 271-5005"
           className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-muted-foreground/50 transition-colors focus:border-accent/50 focus:outline-none focus:ring-2 focus:ring-accent/20"
           placeholder="+7 (___) ___-____"
         />

@@ -1,7 +1,7 @@
 "use client";
 
-import { company } from "@/content/company";
 import { ContactForm } from "@/components/ContactForm";
+import { ContactInfoBlock } from "@/components/ContactInfoBlock";
 import { FadeIn } from "@/components/animations";
 
 export function ContactSection() {
@@ -25,46 +25,7 @@ export function ContactSection() {
                 или ответим на вопросы.
               </p>
 
-              <dl className="mt-8 space-y-5">
-                <div>
-                  <dt className="text-sm font-medium text-muted-foreground">
-                    Адрес
-                  </dt>
-                  <dd className="mt-1 text-white">{company.address}</dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-muted-foreground">
-                    Телефон
-                  </dt>
-                  <dd className="mt-1">
-                    <a
-                      href={`tel:${company.phoneHref}`}
-                      className="text-white transition-colors hover:text-accent"
-                    >
-                      {company.phone}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-muted-foreground">
-                    Email
-                  </dt>
-                  <dd className="mt-1">
-                    <a
-                      href={`mailto:${company.email}`}
-                      className="text-white transition-colors hover:text-accent"
-                    >
-                      {company.email}
-                    </a>
-                  </dd>
-                </div>
-                <div>
-                  <dt className="text-sm font-medium text-muted-foreground">
-                    Режим работы
-                  </dt>
-                  <dd className="mt-1 text-white">{company.workHours}</dd>
-                </div>
-              </dl>
+              <ContactInfoBlock />
             </div>
           </FadeIn>
 

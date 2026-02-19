@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { FadeIn, StaggerChildren, StaggerItem } from "@/components/animations";
 
 const STYLOBATE_IMAGES = [
@@ -26,11 +27,12 @@ export function GastelloStylobate() {
           {STYLOBATE_IMAGES.map(({ src, alt }) => (
             <StaggerItem key={src}>
               <div className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10">
-                <div
-                  className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-500 group-hover:scale-105"
-                  style={{ backgroundImage: `url(${src})` }}
-                  role="img"
-                  aria-label={alt}
+                <Image
+                  src={src}
+                  alt={alt}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </StaggerItem>
